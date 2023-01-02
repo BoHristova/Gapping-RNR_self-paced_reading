@@ -74,7 +74,7 @@ customTrial = label => row =>
             
                 // Grammaticality Judgement
         // Frage
-        newText('grammaticality', "<span>" + "Wie natürlich ist der Satz?" + "</span>")
+        newText("grammaticality", "Wie natürlich ist der Satz?")
             .center()
             .css("margin","2em") 
             .print()
