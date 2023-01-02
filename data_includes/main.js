@@ -74,8 +74,9 @@ customTrial = label => row =>
             
                 // Grammaticality Judgement
         // Frage
-        newText('grammaticality', "<span>" + "Wie natürlich war der Satz?" + "</span>")
+        newText('grammaticality', "<span>" + "Wie natürlich ist der Satz?" + "</span>")
             .center()
+            .css("margin","2em") 
             .print()
             ,
       
@@ -89,6 +90,7 @@ customTrial = label => row =>
         // Hilfetext
         newText("accrat-help", '<div class="hilfetext"><span>1 = überhaupt nicht natürlich, 7 = vollkommen natürlich</span></div>')
             .center()
+            .css("margin","1em") 
             .print()
             ,
         // Antwort erfassen und Skala entfernen
