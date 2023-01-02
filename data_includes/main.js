@@ -4,15 +4,28 @@ PennController.ResetPrefix()
 // DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
 
 // First show instructions, then experiment trials, send results and show end screen
-Sequence("intro","paid", randomize("items"), SendResults(), "end")
-// Sequence("items", SendResults(), "end")
+// Sequence("intro","paid", shuffle(randomize("items"), randomize("filler")), SendResults(), "end")
+Sequence("items", SendResults(), "end")
 
 // Rename the progress bar
 var progressBarText = "Fortschritt"
 
-// Instructions and concent
-newTrial("intro",
-    newHtml("intro_concent", "consent.html")
+// Instructions
+newTrial("instructions",
+    newHtml("intro", "intro.html")
+        .center()
+        .print()
+    ,
+    newButton("intro_next", "Weiter")
+        .center()
+        .print()
+        .wait()
+        )
+)
+
+// Consent
+newTrial("consent",
+    newHtml("consent", "consent.html")
         .cssContainer({"width":"720px"})
         .checkboxWarning("Sie müssen der Datenschutzerklärung zustimmen, um am Experiment teilnehmen zu können.")
         .center()
@@ -21,8 +34,8 @@ newTrial("intro",
     newButton("consent_next", "Weiter")
         .center()
         .print()
-        .wait(getHtml("intro_concent").test.complete()
-        .failure(getHtml("intro_concent").warn())
+        .wait(getHtml("consent").test.complete()
+            .failure(getHtml("consent").warn())
         )
 )
 
@@ -111,8 +124,6 @@ customTrial = label => row =>
 // Template("practice.csv", customTrial("practice") )
 Template("items.csv", customTrial("items") )
 // Template("filler.csv", customTrial("filler") )
-        
-SendResults("send")
     
 // Last screen (after the experiment is done) 
 newTrial("end"
