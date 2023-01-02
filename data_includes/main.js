@@ -98,9 +98,6 @@ customTrial = label => row =>
             .remove()
             ,
         // Textelemente entfernen
-        getText("accrat")
-            .remove()
-        ,
         getText("accrat-help")
             .remove()
   )
