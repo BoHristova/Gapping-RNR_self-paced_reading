@@ -104,15 +104,14 @@ customTrial = label => row =>
         getText("accrat-help")
             .remove()
   )
-  .log("condition", row.Condition)
+  .log("form", row.Form)
   .log("tokenset", row.TokenSet)
-  .log("group", row.List)
   .log("ID", getVar("ID"))
   
 // Übungsphase, Items und Filler ausführen
-Template("practice.csv", customTrial("practice") )
+// Template("practice.csv", customTrial("practice") )
 Template("items.csv", customTrial("items") )
-Template("filler.csv", customTrial("filler") )
+// Template("filler.csv", customTrial("filler") )
         
 SendResults("send")
     
