@@ -20,7 +20,6 @@ newTrial("instructions",
         .center()
         .print()
         .wait()
-        )
 )
 
 // Consent
