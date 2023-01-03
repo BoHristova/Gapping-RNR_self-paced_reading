@@ -105,6 +105,12 @@ customTrial = label => row =>
             .css("margin","1em") 
             .print()
             ,
+        // Abgabe-Button
+        newButton("scale_next", "Antwort abgeben")
+            .print()
+             .wait( getScale("answer").test.selected() 
+                  .failure(newText("Sie müssen einen Wert auf der Skala wählen, brvor Sie fortfahren."))
+             )    
         // Antwort erfassen und Skala entfernen
         getScale("7pt")
             .log()
