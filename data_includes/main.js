@@ -114,8 +114,8 @@ customTrial = label => row =>
             .print()
             .wait(getScale("7pt").test.selected() 
                   .failure(
-                      newText("scale_warnning", "Sie müssen einen Wert auf der Skala wählen, brvor Sie fortfahren.")
-                      .print)
+                      newText("scale_warnning", "Sie müssen einen Wert auf der Skala wählen, bevor Sie fortfahren.")
+                      .center().print())
              )
         ,
         getScale("7pt")
