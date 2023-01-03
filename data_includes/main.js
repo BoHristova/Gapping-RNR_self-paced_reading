@@ -79,7 +79,6 @@ customTrial = label => row =>
         // SPR
         newController("DashedSentence", {s: row.Stim, display: "in place", blankText: '+'})
             .center()
-            .settings.css("font-size", "20pt")
             .print()
             .log()      // Make sure to log the participant's progress
             .wait()
