@@ -79,6 +79,7 @@ customTrial = label => row =>
         // SPR
         newController("DashedSentence", {s: row.Stim, display: "in place", blankText: '+'})
             .center()
+            .settings.css("font-size", "20pt")
             .print()
             .log()      // Make sure to log the participant's progress
             .wait()
@@ -86,45 +87,44 @@ customTrial = label => row =>
             
                 // Grammaticality Judgement
         // Frage
-        newText("grammaticality", "Wie natürlich ist der Satz?")
+        newText("grammaticality", "<b>Wie natürlich ist der Satz?</b>")
             .center()
+            .settings.css("font-size", "13pt")
             .css("margin","2em") 
             .print()
-            ,
-      
+        ,
         // Skala generieren
         newScale("7pt", "1","2","3","4","5","6","7")
             .labelsPosition("top")
             .keys()
             .center()
+            .log("last")
             .print()
-            ,
+        ,
         // Hilfetext
         newText("accrat-help", '<div class="hilfetext"><span>1 = überhaupt nicht natürlich, 7 = vollkommen natürlich</span></div>')
             .center()
             .css("margin","1em") 
             .print()
-            ,
+        ,
         // Abgabe-Button
         newButton("scale_next", "Antwort abgeben")
+            .center()
+            .css("margin","2em") 
             .print()
-             .wait( getScale("answer").test.selected() 
-                  .failure(newText("Sie müssen einen Wert auf der Skala wählen, brvor Sie fortfahren."))
-             )    
-        // Antwort erfassen und Skala entfernen
+            .wait(getScale("7pt").test.selected() 
+                  .failure(
+                      newText("scale_warnning", "Sie müssen einen Wert auf der Skala wählen, brvor Sie fortfahren.")
+                      .print)
+             )
+        ,
         getScale("7pt")
-            .log()
-            .wait()
-            .remove()
-            ,
-        // Textelemente entfernen
-        getText("accrat-help")
-            .remove()
+            .disable()
   )
   .log("form", row.Form)
   .log("tokenset", row.TokenSet)
   .log("ID", getVar("ID"))
-  
+
 // Übungsphase, Items und Filler ausführen
 // Template("practice.csv", customTrial("practice") )
 Template("items.csv", customTrial("items") )
