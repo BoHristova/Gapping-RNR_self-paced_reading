@@ -77,7 +77,7 @@ customTrial = label => row =>
             .remove()
         ,
         // SPR
-        newController("DashedSentence", {s: row.Stim, display: "in place", blankText: '+'})
+        newController("DashedSentence", {s: row.Stim, display: "in place", blankText: '+'})     // Words are isplayed one-by-one in the center of the screen
             .center()
             .print()
             .log()      // Make sure to log the participant's progress
@@ -114,7 +114,7 @@ customTrial = label => row =>
             .wait(getScale("7pt").test.selected() 
                   .failure(
                       newText("scale_warnning", "Sie müssen einen Wert auf der Skala wählen, bevor Sie fortfahren.")
-                      .center().print())
+                      .center().color("red").print())
              )
         ,
         getScale("7pt")
